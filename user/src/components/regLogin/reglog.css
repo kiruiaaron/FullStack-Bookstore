@@ -1,0 +1,106 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+.register{
+    background-image: url("../../images/home-library-hxsr6s1snigufmrr.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+     
+}
+.login{
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.loginWrapper{
+    width: 70%;
+    height: 100%;
+    padding: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(3, 15, 15) ;
+    opacity: .9;
+    border-radius: 20px;
+    
+   
+}
+.left,
+.right{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.left h1{
+    font-size: 50px;
+    font-weight: 800;
+    color: #0be63e;
+    margin-bottom: 10px;
+}
+.left p{
+    font-weight: 800;
+    color: #fafafc;
+}
+.right{
+    background-color: rgb(23, 21, 21);
+    border-radius: 10px;
+    display: flex;
+    padding: 1em;
+    margin: .3em;
+    border-radius: 10px;
+    opacity: 1;
+}
+.form-container{
+  align-items: center;
+}
+.form-container h1{
+    color:#0be63e;
+}
+.form-container form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.form-container form label{
+    color: #0be63e;
+    padding-top:  1em;
+    font-weight: 600;
+}
+.form-container form input,
+.form-container form select 
+{
+    border-radius: 10px;
+    padding: .8em;
+}
+.register-btn{
+    color: #fafafc;
+    background-color: #0be63e;
+    margin-top: .5em;
+    padding: .8em;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 900;
+    width: 20%;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    margin-left: 15em;
+}
+.form-container form p{
+    text-align: center;
+    color: #fafafc;
+}
+.form-container form p span{
+    color: #0be63e;
+}
+
+.rg-login{
+    padding-left: 5em;
+}

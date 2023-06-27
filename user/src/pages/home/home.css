@@ -1,0 +1,104 @@
+body{
+margin: 0;
+padding: 0;
+background-image: url("../../images/home-library-hxsr6s1snigufmrr.jpg")
+}
+
+.top{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    background-color: #0be63e;
+    width: 100vw;
+}
+.logo{
+    text-align: left;
+}
+.logo h1{
+  margin: 0;
+  padding-top: 0;
+  text-align: left;
+}
+ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+ul li{
+    list-style: none;
+    padding-right: 2em;
+    cursor: pointer;
+   
+}
+
+.link{
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+    transition: .1s ease-out;
+}
+.link:hover{
+    transform: scaleY(1.2);
+    color: red;
+}
+.service{
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   text-align: center;
+   border-radius: 20px;
+   height: 50vh;
+   margin-top: 5em;
+}
+.services{
+    width: 80%;
+    text-align: center;
+    background-color: aliceblue;
+    border-radius: 20px;
+    box-shadow: 0 10px 10px 0;
+}
+
+
+/*books section*/
+
+
+.books{
+    display: flex;
+    margin-top: 5em !important;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.booksContainer{
+    padding: 0;
+}
+.availablebooks{
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 20px;
+}
+.latest-card{
+    color: rgb(8, 10, 12);
+    background-color: aliceblue;
+    border-radius: 20px;
+    box-shadow: 0 10px 10px 1px;
+}
+
+/*
+Hero*/
+
+.hero{
+    background-image: url('../../images/dreamy-lights-heart-book-z3mqdwywhyya5tke.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 80vh;
+}
