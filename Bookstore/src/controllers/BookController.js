@@ -72,9 +72,51 @@ async function allAvailableBooks(req, res) {
     }
 }
 
+async function availableBooks(req,res){
+   let sql = await mssql.connect(config);
+   if(sql.connected){
+    let results = await sql.query("SELECT * FROM Books WHERE Status ='available'");
+    res.json({
+      success:true,
+      message:'all available books',
+      results:results.recordset,
+
+    });
+   }
+   else{
+    res.status(404).json({
+      success:false,
+      message:'no available books '
+      
+    })
+   }
+}
+
+async function LoanBooks(req,res){
+  let sql = await mssql.connect(config);
+  if(sql.connected){
+   let results = await sql.query("SELECT * FROM Books WHERE Status ='loaned'");
+   res.json({
+     success:true,
+     message:'all loaned books',
+     results:results.recordset,
+
+   });
+  }
+  else{
+   res.status(404).json({
+     success:false,
+     message:'no loaned books '
+     
+   })
+  }
+}
+
 
 module.exports = {
     createBook,
     allAvailableBooks,
     fetchBookById,
+    availableBooks,
+    LoanBooks
 };

@@ -3,7 +3,9 @@ const BookRouter = express.Router();
 
 const {allAvailableBooks,
     fetchBookById,
-    createBook,} =require('../controllers/BookController');
+    createBook,
+    availableBooks,
+    LoanBooks,} =require('../controllers/BookController');
 //const { tokenVerifier } = require('../utils/token');
 const tokenValidatorMiddleware = require('../middlewares/tokenValidatorMiddleware');
 
@@ -11,6 +13,8 @@ const tokenValidatorMiddleware = require('../middlewares/tokenValidatorMiddlewar
 BookRouter.get('/books',allAvailableBooks);
 BookRouter.get('/books/:id',fetchBookById);
 BookRouter.post('/newbook',createBook);
+BookRouter.get('/statusAvailable',availableBooks);
+BookRouter.get('/loans',LoanBooks)
 
 
 module.exports = BookRouter;

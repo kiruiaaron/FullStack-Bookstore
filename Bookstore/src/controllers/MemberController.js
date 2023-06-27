@@ -58,8 +58,8 @@ async function loginMember(req, res) {
         let user = result.recordset[0]
         console.log(user)
         if (user) {
-           // let password_match = await bcrypt.compare//(Password,user.Password)
-            if(user ){
+           let password_match = await bcrypt.compare(Password,user.Password)
+            if(password_match ){
                 let token = await tokenGenerator({
                     Email: user.Email
                 })
@@ -76,7 +76,7 @@ async function loginMember(req, res) {
         } else {
           res.status(404).json({
             success: false,
-            message: "Authentication Failed"
+            message: "Wrong Credentials check your email and password"
           });
         }
       } 
@@ -97,15 +97,16 @@ async function createNewMember(req, res) {
     if (sql.connected) {
         const { Name,userName, Address,ContactNumber,Email, Password,confirmPassword } = req.body;
 
-        //const hashedPassword = await bcrypt.hash(Password, 8)
+        const hashedPassword = await bcrypt.hash(Password, 8)
+        const hashedConfirmPassword = await bcrypt.hash(confirmPassword,8)
         const result = await sql.request()
             .input('Name', Name)
             .input('userName', userName)
             .input('Address',Address)
             .input('ContactNumber',ContactNumber)
             .input('Email', Email)
-            .input('Password',Password)
-            .input('confirmPassword',confirmPassword)
+            .input('Password',hashedPassword)
+            .input('confirmPassword',hashedConfirmPassword)
             .execute('add_New_Member');
 
         res.status(200).json({

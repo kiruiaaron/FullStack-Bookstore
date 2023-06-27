@@ -12,9 +12,9 @@ const Books = () => {
     
     useEffect(()=>{
       const fetchBooks =async()=>{
-         const res = await axios.get('http://localhost:5000/books', books)
-         setItem(res.data.data)
-         console.log(res.data.data)
+         const res = await axios.get('http://localhost:5000/statusAvailable', books)
+         setItem(res.data.results)
+         console.log(res.data)
       }
       fetchBooks();
     },[books])
@@ -30,7 +30,7 @@ const Books = () => {
         Feel free to borrow your favourite book
       </p>
          {
-           (!item)?<p>Not Found</p>:<AvailableCard data={item}/> 
+            (!item)?<p>Not Found</p>:<AvailableCard data={item}/> 
          }
       </div>
   

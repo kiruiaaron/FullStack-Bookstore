@@ -27,27 +27,33 @@ async function getLoans(req,res){
       const sql = await mssql.connect(config)
 
      if(sql.connected){
-      const { LoanID,BookID, MemberID,LoanDate,ReturnDate } = req.body;
+      const {BookID, MemberID} = req.body;
 
-  // Update the book status in the database
-  const updateBookQuery = `UPDATE Books SET Status = 'Loaned' WHERE BookID = ${ BookID}`;
-  sql.query(updateBookQuery, (error, results) => {
-    if (error) {
-      console.error('Error updating book status:', error);
-      res.status(500).json({ message: 'Failed to borrow the book.' });
-      return;
-    }
+      const CurrentDate = new Date(); // Current date
+     const finalDate = new Date();
+      finalDate.setDate(finalDate.getDate() + 7); // Adding 14 days to the current date
 
+ 
 
+// Format the dates
+        const LoanDate = CurrentDate.toDateString();
+        console.log(LoanDate)
+        const ReturnDate = finalDate.toDateString();
+        console.log(ReturnDate)
 
-    // Record the borrowing user in the database
-    const recordBorrowerQuery = `INSERT INTO Loans (LoanID,BookID,MemberID,LoanDate,ReturnDate) VALUES('${LoanID}','${BookID}','${MemberID}','${LoanDate}','${ReturnDate}')`;
-    sql.query(recordBorrowerQuery,(err, result) => {
-      if (err) {
-        console.error('Error recording borrower:', err);
-        res.status(500).json({ message: 'Failed to borrow the book.' });
-        return;
-      }
+         const results = sql.request()
+                             .input('BookID',BookID)
+                             .input('MemberID',MemberID)
+                             .input('LoanDate',LoanDate)
+                             .input('ReturnDate',ReturnDate)
+                             .execute('borrowBook');
+     
+
+                           res.status(201).json({
+                            success:true,
+                            message:'Borrowed book successfully',
+                            results: results.recordset
+                           })  
       //retrive email and booktitle
 
       const email =  sql.query(`SELECT Email from Members WHERE MemberID= ${MemberID}`)
@@ -56,34 +62,40 @@ async function getLoans(req,res){
 
       // Send a response indicating the book has been borrowed successfully
       sendMailBorrowedBook(email,bookTitle);
-      res.status(200).json({ message: 'Book borrowed successfully.' ,
-                            results:result.recordset
-                              });
       
       
-    });
-  });
-};
+    }else{
+       res.status(404).json({
+        success:true,
+        message:'failed to borrow a book',
+        error:error.message
+       })
+    };
+  };
 
-  }
+
+ 
   
  
+
 // endpoint to return a book
 async function ReturnBook(req,res){
   const sql = await mssql.connect(config)
 
  if(sql.connected){
  const {  BookID,MemberID } = req.body;
+ const results = await sql.request()
+                          .input('BookID',mssql.Int,BookID)
+                          .input('MemberID',mssql.Int,MemberID)
+                          .execute('returnBook');
+
+          res.status(201).json({
+            success:true,
+            message:'Book returned successfully',
+            
+          })
 
  // Update the book status in the database
- const updateBookQuery = `UPDATE Books SET Status = 'Available' WHERE BookID = ${ BookID}`;
- const deleteEntry =`DELETE FROM loans WHERE MemberID= ${MemberID}`;
- sql.query(updateBookQuery, (error, results) => {
-   if (error) {
-     console.error('Error updating book status:', error);
-     res.status(500).json({ message: 'Failed to return the book.' });
-     return;
-   }
 
    const email =  sql.query(`SELECT Email from Members WHERE MemberID= ${MemberID}`)
    const bookTitle = sql.query(`SELECT Title from Books WHERE BookID =${BookID}`)
@@ -91,7 +103,14 @@ async function ReturnBook(req,res){
 sendMailReturnBook(email,bookTitle)
    res.status(200).json({ message: 'Book returned successfully.' ,
                             results:results.recordset});
- });
+}
+else{
+  res.status(404).json({
+    success: "false",
+    message:'failed to return the book',
+    error:message.error
+    
+  })
 }
 }
 
