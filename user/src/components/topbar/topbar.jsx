@@ -1,43 +1,37 @@
-import "./topbar.css" 
-
-import React from 'react'
-import profile from '../../images/JESUSU.PNG'
+import "./topbar.css";
+import React, { useState } from "react";
+import Logout from "../regLogin/Logout";
 
 const Topbar = () => {
+  const userName = localStorage.getItem("Name") || "User";
+
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return "Good morning";
+    if (hour < 18) return "Good afternoon";
+    return "Good evening";
+  };
+
   return (
     <div className="topbarContainer">
-
       <div className="topbarLeft">
-            <div className="logo">
-             <span className="logo">Ultradev</span>
-            </div>
-      </div>
-      <div className="topbarCenter">
-        <div className="searchbar">
-           <input type="text" className="searchInput" placeholder="search for any book "/>
+        <div className="logo">
+          <span className="logo">ABBRON</span>
         </div>
       </div>
       <div className="topbarRight">
         <div className="topbarLinks">
-           <span className="topbarLink">Homepage</span>
-           <span className="topbarLink">Timeline</span>
+          <span className="topbarLink">Homepage</span>
         </div>
-        <div className="topbarIcons">
-          <div className="topbarItem">
-            <span className="topbrIconBadge">1</span>
-          </div>
-          <div className="topbarItem">
-            <span className="topbrIconBadge">2</span>
-          </div>
-          <div className="topbarItem">
-            <span className="topbrIconBadge">1</span>
-          </div>
-        </div> 
-        <img src={profile} className="topbarImg" alt="" />
-        <span>Aron</span>
+        <span>
+          {getGreeting()}, {userName}!
+        </span>
+        <span>
+          <Logout />
+        </span>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Topbar
+export default Topbar;

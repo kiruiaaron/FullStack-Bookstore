@@ -8,7 +8,7 @@ BEGIN
     FROM Members
     WHERE MemberID = @id;
 END;
-
+Go
 --select member by email
 CREATE OR ALTER PROCEDURE select_member_Email
     @EmailAddress VARCHAR(255)
@@ -23,7 +23,7 @@ exec select_member_Email
 @EmailAddress ="cosmars@gmail.com"
 
 select * from Members
-
+Go
 --Add new member
 CREATE OR ALTER PROCEDURE add_New_Member
     @name VARCHAR(255),

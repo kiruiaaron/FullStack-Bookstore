@@ -38,9 +38,9 @@ body{
     justify-content: center;
 }
 .left h1{
-    font-size: 50px;
-    font-weight: 800;
-    color: #0be63e;
+    font-size: 40px;
+    font-weight: 700;
+    color: #353696;
     margin-bottom: 10px;
 }
 .left p{
@@ -56,51 +56,56 @@ body{
     border-radius: 10px;
     opacity: 1;
 }
-.form-container{
+.form-container-rg{
   align-items: center;
 }
-.form-container h1{
-    color:#0be63e;
+.form-container-rg h1{
+    color:#291866;
 }
-.form-container form{
+.form-container-rg .rg-log{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.form-container form label{
-    color: #0be63e;
-    padding-top:  1em;
+.form-container-rg .rg-log label{
+    color: #291866;
+    padding-top:  0.3em;
     font-weight: 600;
 }
-.form-container form input,
-.form-container form select 
-{
+.form-container-rg .rg-log input,
+.form-container-rg .rg-log select 
+{ 
     border-radius: 10px;
-    padding: .8em;
+    padding: .5em;
 }
 .register-btn{
     color: #fafafc;
-    background-color: #0be63e;
+    background-color:#291866;
     margin-top: .5em;
     padding: .8em;
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-weight: 900;
-    width: 20%;
+    font-weight: 700;
+    width: 30%;
     border: none;
     outline: none;
-    border-radius: 20px;
+    border-radius: 10px;
     margin-left: 15em;
 }
-.form-container form p{
+.form-container .rg-log p{
     text-align: center;
+    font-size: 1rem;
     color: #fafafc;
+  
 }
-.form-container form p span{
-    color: #0be63e;
+.form-container .rg-log .pLogin {
+    color: #3e3166;
+    margin: 20px;
+    
 }
 
 .rg-login{
     padding-left: 5em;
+    
 }

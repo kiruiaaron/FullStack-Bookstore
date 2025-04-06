@@ -1,0 +1,86 @@
+.book-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    background: #f8f9fa;
+  }
+  
+  .book-card {
+    width: 220px;
+    height: 320px;
+    perspective: 1000px;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .book-card:hover {
+    transform: rotateY(5deg) rotateX(5deg) scale(1.05);
+  }
+  
+  .book-cover {
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    transform-origin: left center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .book-spine {
+    width: 15px;
+    height: 100%;
+    background: #d9d9d9;
+    position: absolute;
+    left: -10px;
+    top: 0;
+    box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.2);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  
+  /* Overlay for book details */
+  .book-details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    text-align: center;
+  }
+  
+  .book-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 3px;
+  }
+  
+  .book-author {
+    font-size: 1.5rem;
+    font-style: italic;
+  }
+  
+  .book-year {
+    font-size: 1rem;
+  }
+
+  .status{
+    font-size: 1.5rem;
+    color: blue;
+    background-color: aliceblue;
+  }
+  

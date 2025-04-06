@@ -1,7 +1,7 @@
 body{
 margin: 0;
 padding: 0;
-background-image: url("../../images/home-library-hxsr6s1snigufmrr.jpg")
+background-color:darkgray
 }
 
 .top{
@@ -10,11 +10,12 @@ background-image: url("../../images/home-library-hxsr6s1snigufmrr.jpg")
     align-items: center;
     justify-content: space-around;
     text-align: center;
-    background-color: #0be63e;
+    background-color: rgb(61, 41, 148);
     width: 100vw;
 }
 .logo{
     text-align: left;
+    color: aliceblue;
 }
 .logo h1{
   margin: 0;
@@ -37,8 +38,8 @@ ul li{
 
 .link{
     text-decoration: none;
-    color: black;
-    font-weight: 700;
+    color: white;
+    font-weight: 600;
     transition: .1s ease-out;
 }
 .link:hover{

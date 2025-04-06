@@ -19,7 +19,7 @@ END;
 
 -- EXEC CreateBook 108, 'The Rock', 'Jane rael', '1814-12-10', 'Available';
 
-
+GO
 --- select book by BookID
 CREATE PROCEDURE fetchBookID(
     @ID INT

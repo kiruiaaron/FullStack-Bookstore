@@ -6,12 +6,11 @@ const TopNavBar = () => {
     <div className='top'>
         <div className="logo">
             <h1>
-                Ultradev
+                ABBRON LIBRARY 
             </h1>
         </div>
         <ul>
             <li><Link className='link'> Home</Link></li>
-            <li><Link className='link' to='/about'>About</Link> </li>
             <li><Link className='link' to='/register'> Register</Link></li>
             <li><Link className='link' to='/login'>Login</Link> </li>
         </ul>

@@ -5,7 +5,7 @@ require ("dotenv").config()
 const email_config ={
     host: 'smtp.gmail.com',
     port: 587,
-    secure: false,
+    secure: true,
     requireTLS: true,
 
     auth: {
